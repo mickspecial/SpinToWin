@@ -10,7 +10,7 @@ import UIKit
 
 class SpinnerListController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-	var options = [String]()
+	var options = [SpinnerItem]()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -47,7 +47,8 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	}
 
 	private func loadSpinnerOptionsData() {
-		options = ["Option A", "Option B", "Option C"]
+		options.removeAll()
+		options = User.current.items
 		collectionView.reloadData()
 	}
 
@@ -84,8 +85,8 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 
 	// MARK: - Remove Items
 
-	private func presentOptionToDeleteItem(_ item: String) {
-		let alert = UIAlertController(title: "Delete", message: "Remove \(item)", preferredStyle: .alert)
+	private func presentOptionToDeleteItem(_ item: SpinnerItem) {
+		let alert = UIAlertController(title: "Delete", message: "Remove \(item.itemName)", preferredStyle: .alert)
 		let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
 			self.deleteItem(item)
 		}
@@ -94,16 +95,15 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		present(alert, animated: true)
 	}
 
-	private func deleteItem(_ item: String) {
+	private func deleteItem(_ item: SpinnerItem) {
 		print("Delete item from collection")
 		var temp = options
-		if let index = temp.firstIndex(of: item) {
-			temp.remove(at: index)
-			options = temp
-			collectionView.reloadData()
-		} else {
-			print("Unable to remove item...")
-		}
+		let preDeleteCount = temp.count
+		temp.removeAll(where: { $0.id == item.id })
+		User.current.items = temp
+		loadSpinnerOptionsData()
+		User.current.save()
+		precondition(User.current.items.count == preDeleteCount - 1, "Delete Error")
 	}
 
 	// MARK: - Add Items
@@ -117,10 +117,15 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	}
 
 	private func addItem(_ item: String) {
-		print("Add item from collection")
+		print("Add item to collection")
 		if item.isEmpty { return }
-		options.append(item)
-		collectionView.reloadData()
+		var temp = options
+		let preAddCount = temp.count
+		temp.append(SpinnerItem(itemName: item))
+		User.current.items = temp
+		loadSpinnerOptionsData()
+		User.current.save()
+		precondition(User.current.items.count == preAddCount + 1, "Add Error")
 	}
 
 	// MARK: - Spin

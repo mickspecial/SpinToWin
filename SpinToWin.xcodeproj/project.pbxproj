@@ -13,6 +13,8 @@
 		009B2737229A187100AF224D /* SpinnerListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2736229A187100AF224D /* SpinnerListController.swift */; };
 		009B2739229A1CBF00AF224D /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2738229A1CBF00AF224D /* OptionCell.swift */; };
 		009B273B229A1CF900AF224D /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B273A229A1CF900AF224D /* Helpers.swift */; };
+		009B2741229A4C5900AF224D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2740229A4C5900AF224D /* User.swift */; };
+		009B2744229A4CB700AF224D /* SpinnerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2743229A4CB700AF224D /* SpinnerItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		009B2736229A187100AF224D /* SpinnerListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerListController.swift; sourceTree = "<group>"; };
 		009B2738229A1CBF00AF224D /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		009B273A229A1CF900AF224D /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		009B2740229A4C5900AF224D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		009B2743229A4CB700AF224D /* SpinnerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 			children = (
 				009B273C229A20EB00AF224D /* Controllers */,
 				009B273D229A20F900AF224D /* Views */,
+				009B2742229A4CA000AF224D /* Model */,
 				009B272B229A175100AF224D /* Assets.xcassets */,
 				009B272D229A175100AF224D /* LaunchScreen.storyboard */,
 				009B2730229A175100AF224D /* Info.plist */,
@@ -81,6 +86,15 @@
 				009B2738229A1CBF00AF224D /* OptionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		009B2742229A4CA000AF224D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				009B2740229A4C5900AF224D /* User.swift */,
+				009B2743229A4CB700AF224D /* SpinnerItem.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +167,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				009B2744229A4CB700AF224D /* SpinnerItem.swift in Sources */,
 				009B2737229A187100AF224D /* SpinnerListController.swift in Sources */,
 				009B2725229A175000AF224D /* AppDelegate.swift in Sources */,
+				009B2741229A4C5900AF224D /* User.swift in Sources */,
 				009B2739229A1CBF00AF224D /* OptionCell.swift in Sources */,
 				009B273B229A1CF900AF224D /* Helpers.swift in Sources */,
 			);

@@ -10,9 +10,9 @@ import UIKit
 
 class OptionCell: UICollectionViewCell {
 
-	var option: String = "" {
+	var option: SpinnerItem! {
 		didSet {
-			optionLabel.text = option
+			optionLabel.text = option?.itemName ?? ""
 		}
 	}
 

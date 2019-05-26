@@ -15,6 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+		// Load a user from defaults - allows for item saving etc
+		User.current = User.load() ?? User()
+
+		print(User.current.items)
+
+		if User.current.items.isEmpty {
+			print("Options Added")
+			let someDefaults = [
+				SpinnerItem(itemName: "Option A"),
+				SpinnerItem(itemName: "Option B"),
+				SpinnerItem(itemName: "Option C")
+			]
+
+			User.current.items = someDefaults
+			User.current.save()
+		}
+
+		// Set up VC as not using storyboards
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .vertical
 		let spinnerVC = SpinnerListController(collectionViewLayout: layout)
