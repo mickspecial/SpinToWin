@@ -109,6 +109,12 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	// MARK: - Add Items
 
 	@objc private func addOptionPressed() {
+
+		if options.count == 10 {
+			showErrorAlert(message: "Max of 10 options only")
+			return
+		}
+
 		let alert = UIAlertController.textInput(title: "Add", message: "", placeholder: "", confirmButton: "Add") { newItem in
 			guard let newItem = newItem else { return }
 			self.addItem(newItem)
@@ -119,6 +125,7 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	private func addItem(_ item: String) {
 		print("Add item to collection")
 		if item.isEmpty { return }
+
 		var temp = options
 		let preAddCount = temp.count
 		temp.append(SpinnerItem(itemName: item))
@@ -130,17 +137,18 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 
 	// MARK: - Spin
 
-	private func showErrorAlert() {
-		let alert = UIAlertController(title: "Opps...", message: "At least 2 options needed", preferredStyle: .alert)
+	private func showErrorAlert(message: String) {
+		let alert = UIAlertController(title: "Opps...", message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 		present(alert, animated: true)
 	}
 
 	@objc private func showSpinner() {
 		if options.count < 2 {
-			showErrorAlert()
+			showErrorAlert(message: "At least 2 options needed")
 			return
 		}
+
 		navigationController?.pushViewController(SpinnerViewController(spinnerItems: options), animated: true)
 	}
 }
