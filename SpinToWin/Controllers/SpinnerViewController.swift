@@ -12,7 +12,7 @@ class SpinnerViewController: UIViewController {
 
 	private let spinnerView: SpinnerView!
 	private var spinBtn: UIButton!
-	private let powerLevels: [Int] = Array(6...15)
+	private let powerLevels: [Int] = Array(6...20)
 	private lazy var spinAnimator = UIDynamicAnimator(referenceView: view)
 
 	private var isSpinning = false {
@@ -52,7 +52,7 @@ class SpinnerViewController: UIViewController {
 		let rotate = UIDynamicItemBehavior(items: [spinnerView])
 		rotate.allowsRotation = true
 		// add some randoness to the spin
-		let resistanceChoices = [CGFloat(0.5), CGFloat(0.6), CGFloat(0.7), CGFloat(0.8), CGFloat(0.9), CGFloat(1)]
+		let resistanceChoices = [CGFloat(0.4), CGFloat(0.5), CGFloat(0.6), CGFloat(0.8), CGFloat(1), CGFloat(1.1)]
 		// using force unwrap here because impossible to not to exist
 		rotate.angularResistance = resistanceChoices.randomElement()!
 		rotate.addAngularVelocity(CGFloat(power), for: spinnerView)

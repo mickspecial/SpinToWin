@@ -16,9 +16,9 @@ class SpinnerView: UIView {
 		super.init(frame: .zero)
 		assert(options.count >= 2 && options.count <= 10, "Wheel Design Limit")
 
-		backgroundColor = .lightGray
+		backgroundColor = UIColor.flatColor.blue.shipsOfficer
 		layer.borderWidth = 4
-		layer.borderColor = UIColor.darkGray.cgColor
+		layer.borderColor = UIColor.flatColor.blue.disco.cgColor
 
 		// used to calculate angle of the slice in the wheel
 		// ie 2 slices is 180, 4 slices is 90
@@ -45,8 +45,7 @@ class SpinnerView: UIView {
 		if didLayoutView { return }
 		didLayoutView = true
 		// add this methods can be called more then once
-
-		let wheelTextPadding: CGFloat = 30
+		let wheelTextPadding: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 30 : 40
 
 		// make into a wheel
 		layer.cornerRadius = bounds.width / 2
@@ -73,7 +72,7 @@ class SpinnerView: UIView {
 		for _ in spinnerLabels {
 			// add a line for each segment of the wheel
 			let wheelLine = UIView()
-			wheelLine.backgroundColor = UIColor.darkGray
+			wheelLine.backgroundColor = UIColor.flatColor.blue.disco
 			wheelLine.translatesAutoresizingMaskIntoConstraints = false
 			wheelLine.bounds = CGRect(x: 0, y: 0, width: 4, height: bounds.height / 2)
 			wheelLine.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
@@ -96,9 +95,10 @@ class SpinnerView: UIView {
 	}
 
 	private func sectionLabel(name: String) -> UILabel {
-		let label = UILabel(text: name, font: .boldSystemFont(ofSize: 20), textColor: .white, textAlignment: .right, numberOfLines: 1)
+		let fontSize: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 20 : 36
+		let label = UILabel(text: name, font: .boldSystemFont(ofSize: fontSize), textColor: .white, textAlignment: .right, numberOfLines: 1)
 		label.center = center
-		label.frame = CGRect(x: 0, y: frame.height / 2, width: frame.width, height: 20)
+		label.frame = CGRect(x: 0, y: frame.height / 2, width: frame.width, height: fontSize)
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}

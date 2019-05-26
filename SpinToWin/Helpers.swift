@@ -194,6 +194,7 @@ extension UIColor {
 		enum blue {
 			static let mariner = UIColor(netHex: 0x3585C5)
 			static let disco = UIColor(netHex: 0x25CCF7)
+			static let shipsOfficer = UIColor(netHex: 0x2C3A47)
 		}
 
 		enum red {
