@@ -19,6 +19,7 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		collectionView.dataSource = self
 		collectionView.delegate = self
 		setUpController()
+		addNavButtons()
 		loadSpinnerOptionsData()
 	}
 
@@ -28,6 +29,12 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		title = "Spin To Win"
 		navigationController?.navigationItem.largeTitleDisplayMode = .always
 		navigationController?.navigationBar.prefersLargeTitles = true
+		navigationController?.navigationBar.tintColor = .darkGray
+	}
+
+	private func addNavButtons() {
+		let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addOptionPressed))
+		navigationItem.rightBarButtonItem = addBtn
 	}
 
 	private func loadSpinnerOptionsData() {
@@ -90,6 +97,21 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		}
 	}
 
-	// TODO: - Add Items
+	// MARK: - Add Items
+
+	@objc private func addOptionPressed() {
+		let alert = UIAlertController.textInput(title: "Add", message: "", placeholder: "", confirmButton: "Add") { newItem in
+			guard let newItem = newItem else { return }
+			self.addItem(newItem)
+		}
+		present(alert, animated: true)
+	}
+
+	private func addItem(_ item: String) {
+		print("Add item from collection")
+		if item.isEmpty { return }
+		options.append(item)
+		collectionView.reloadData()
+	}
 
 }

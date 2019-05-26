@@ -20,6 +20,26 @@ extension UILabel {
 	}
 }
 
+extension UIAlertController {
+
+	static func textInput(title: String, message: String, placeholder: String, confirmButton: String, completion:@escaping (String?) -> Void) -> UIAlertController {
+		let composeAlert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		composeAlert.addTextField { textField in
+			textField.placeholder = placeholder
+		}
+		composeAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		composeAlert.addAction(UIAlertAction(title: confirmButton, style: .default, handler: { _ in
+			if let inputString = composeAlert.textFields?.first?.text {
+				completion(inputString)
+			} else {
+				completion(nil)
+			}
+		}))
+		return composeAlert
+	}
+}
+
+
 // Helpers I use - I did not create: https://youtu.be/iqpAP7s3b-8
 extension UIView {
 
