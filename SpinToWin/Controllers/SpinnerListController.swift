@@ -81,6 +81,7 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		let cellData = options[indexPath.item]
 		print("Tapped \(cellData)")
 		presentOptionToDeleteItem(cellData)
+		collectionView.deselectItem(at: indexPath, animated: true)
 	}
 
 	// MARK: - Remove Items

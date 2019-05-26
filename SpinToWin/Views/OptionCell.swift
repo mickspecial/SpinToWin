@@ -16,6 +16,12 @@ class OptionCell: UICollectionViewCell {
 		}
 	}
 
+	override var isSelected: Bool {
+		didSet {
+			backgroundColor = isSelected ? UIColor.flatColor.blue.disco : UIColor.flatColor.blue.mariner
+		}
+	}
+
 	private var	optionLabel = UILabel(text: "", font: .systemFont(ofSize: 16, weight: .bold), textColor: .white)
 
 	override init(frame: CGRect) {
