@@ -14,27 +14,36 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		collectionView.backgroundColor = .white
-		collectionView.register(OptionCell.self, forCellWithReuseIdentifier: OptionCell.cellID)
-		collectionView.dataSource = self
-		collectionView.delegate = self
 		setUpController()
-		addNavButtons()
+		addButtons()
 		loadSpinnerOptionsData()
 	}
 
 	// MARK: - Set Up
 
 	private func setUpController() {
+		collectionView.backgroundColor = UIColor.flatColor.gray.twinkle
+		collectionView.register(OptionCell.self, forCellWithReuseIdentifier: OptionCell.cellID)
+		collectionView.dataSource = self
+		collectionView.delegate = self
 		title = "Spin To Win"
 		navigationController?.navigationItem.largeTitleDisplayMode = .always
 		navigationController?.navigationBar.prefersLargeTitles = true
-		navigationController?.navigationBar.tintColor = .darkGray
+		navigationController?.navigationBar.tintColor = UIColor.flatColor.gray.balticSea
+		navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.flatColor.gray.balticSea]
 	}
 
-	private func addNavButtons() {
+	private func addButtons() {
+		// nav bar buttons
 		let addBtn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addOptionPressed))
 		navigationItem.rightBarButtonItem = addBtn
+
+		// floating done pill button
+		let spinBtn = UIButton(title: "Done", titleColor: .white, font: .boldSystemFont(ofSize: 24), backgroundColor: UIColor.flatColor.green.emerald, target: self, action: #selector(showSpinner))
+		spinBtn.layer.cornerRadius = 30
+		collectionView.addSubview(spinBtn)
+		spinBtn.anchor(top: nil, leading: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 0, bottom: 50, right: 0), size: .init(width: 120, height: 60))
+		spinBtn.centerXInSuperview()
 	}
 
 	private func loadSpinnerOptionsData() {
@@ -113,5 +122,12 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		options.append(item)
 		collectionView.reloadData()
 	}
+
+	// MARK: - Spin
+
+	@objc private func showSpinner() {
+		print("Tap....")
+	}
+
 
 }

@@ -20,7 +20,7 @@ class OptionCell: UICollectionViewCell {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .darkGray
+		backgroundColor = UIColor.flatColor.blue.mariner
 		layer.cornerRadius = 10
 		setUpView()
 	}

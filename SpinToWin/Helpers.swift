@@ -20,6 +20,22 @@ extension UILabel {
 	}
 }
 
+extension UIButton {
+
+	convenience public init(title: String, titleColor: UIColor, font: UIFont = .systemFont(ofSize: 16), backgroundColor: UIColor = .clear, target: Any? = nil, action: Selector? = nil) {
+		self.init(type: .system)
+		setTitle(title, for: .normal)
+		setTitleColor(titleColor, for: .normal)
+		self.titleLabel?.font = font
+
+		self.backgroundColor = backgroundColor
+		if let action = action {
+			addTarget(target, action: action, for: .touchUpInside)
+		}
+	}
+}
+
+
 extension UIAlertController {
 
 	static func textInput(title: String, message: String, placeholder: String, confirmButton: String, completion:@escaping (String?) -> Void) -> UIAlertController {
@@ -148,5 +164,35 @@ struct AnchoredConstraints {
 extension UICollectionViewCell {
 	static var cellID: String {
 		return String(describing: self)
+	}
+}
+
+extension UIColor {
+
+	convenience init(r: Int, g: Int, b: Int, a: CGFloat = 1.0) {
+		assert(r >= 0 && r <= 255, "Invalid red component")
+		assert(g >= 0 && g <= 255, "Invalid green component")
+		assert(b >= 0 && b <= 255, "Invalid blue component")
+		self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: a)
+	}
+
+	convenience init(netHex: Int) {
+		self.init(r: (netHex >> 16) & 0xff, g: (netHex >> 8) & 0xff, b: netHex & 0xff)
+	}
+
+	enum flatColor {
+
+		enum green {
+			static let emerald = UIColor(netHex: 0x2ecc71)
+		}
+
+		enum gray {
+			static let twinkle = UIColor(netHex: 0xd1d8e0)
+			static let balticSea = UIColor(netHex: 0x3d3d3d)
+		}
+
+		enum blue {
+			static let mariner = UIColor(netHex: 0x3585C5)
+		}
 	}
 }
