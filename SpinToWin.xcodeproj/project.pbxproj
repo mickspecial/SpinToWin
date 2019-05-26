@@ -16,6 +16,8 @@
 		009B2741229A4C5900AF224D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2740229A4C5900AF224D /* User.swift */; };
 		009B2744229A4CB700AF224D /* SpinnerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2743229A4CB700AF224D /* SpinnerItem.swift */; };
 		009B2746229A548100AF224D /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2745229A548100AF224D /* SpinnerViewController.swift */; };
+		009B2748229A5B9100AF224D /* SpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2747229A5B9100AF224D /* SpinnerView.swift */; };
+		009B274A229A5BEF00AF224D /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B2749229A5BEF00AF224D /* TriangleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		009B2740229A4C5900AF224D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		009B2743229A4CB700AF224D /* SpinnerItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerItem.swift; sourceTree = "<group>"; };
 		009B2745229A548100AF224D /* SpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		009B2747229A5B9100AF224D /* SpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerView.swift; sourceTree = "<group>"; };
+		009B2749229A5BEF00AF224D /* TriangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,8 @@
 			isa = PBXGroup;
 			children = (
 				009B2738229A1CBF00AF224D /* OptionCell.swift */,
+				009B2747229A5B9100AF224D /* SpinnerView.swift */,
+				009B2749229A5BEF00AF224D /* TriangleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +182,8 @@
 				009B2741229A4C5900AF224D /* User.swift in Sources */,
 				009B2739229A1CBF00AF224D /* OptionCell.swift in Sources */,
 				009B2746229A548100AF224D /* SpinnerViewController.swift in Sources */,
+				009B2748229A5B9100AF224D /* SpinnerView.swift in Sources */,
+				009B274A229A5BEF00AF224D /* TriangleView.swift in Sources */,
 				009B273B229A1CF900AF224D /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
