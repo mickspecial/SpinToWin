@@ -22,6 +22,8 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		loadSpinnerOptionsData()
 	}
 
+	// MARK: - Set Up
+
 	private func setUpController() {
 		title = "Spin To Win"
 		navigationController?.navigationItem.largeTitleDisplayMode = .always
@@ -29,9 +31,11 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	}
 
 	private func loadSpinnerOptionsData() {
-		options = ["A", "B", "C"]
+		options = ["Option A", "Option B", "Option C"]
 		collectionView.reloadData()
 	}
+
+	// MARK: - Collection View Methods
 
 	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return options.count
@@ -59,5 +63,33 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let cellData = options[indexPath.item]
 		print("Tapped \(cellData)")
+		presentOptionToDeleteItem(cellData)
 	}
+
+	// MARK: - Remove Items
+
+	private func presentOptionToDeleteItem(_ item: String) {
+		let alert = UIAlertController(title: "Delete", message: "Remove \(item)", preferredStyle: .alert)
+		let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+			self.deleteItem(item)
+		}
+		alert.addAction(deleteAction)
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		present(alert, animated: true)
+	}
+
+	private func deleteItem(_ item: String) {
+		print("Delete item from collection")
+		var temp = options
+		if let index = temp.firstIndex(of: item) {
+			temp.remove(at: index)
+			options = temp
+			collectionView.reloadData()
+		} else {
+			print("Unable to remove item...")
+		}
+	}
+
+	// TODO: - Add Items
+
 }
