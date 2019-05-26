@@ -23,9 +23,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if User.current.items.isEmpty {
 			print("Options Added")
 			let someDefaults = [
-				SpinnerItem(itemName: "Option A"),
-				SpinnerItem(itemName: "Option B"),
-				SpinnerItem(itemName: "Option C")
+				SpinnerItem(itemName: "🍏"),
+				SpinnerItem(itemName: "🍔"),
+				SpinnerItem(itemName: "🍬"),
+				SpinnerItem(itemName: "🍦"),
+				SpinnerItem(itemName: "🍕")
 			]
 
 			User.current.items = someDefaults
