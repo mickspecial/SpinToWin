@@ -9,6 +9,7 @@
 // Simple DB to allow saving the spinner options
 
 import Foundation
+
 extension User {
 	static var current: User!
 }

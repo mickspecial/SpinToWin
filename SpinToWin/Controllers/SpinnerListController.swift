@@ -26,7 +26,7 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 		collectionView.register(OptionCell.self, forCellWithReuseIdentifier: OptionCell.cellID)
 		collectionView.dataSource = self
 		collectionView.delegate = self
-		title = "Spin To Win"
+		title = "Spinner Items"
 		navigationController?.navigationItem.largeTitleDisplayMode = .always
 		navigationController?.navigationBar.prefersLargeTitles = true
 		navigationController?.navigationBar.tintColor = UIColor.flatColor.gray.balticSea
@@ -130,9 +130,17 @@ class SpinnerListController: UICollectionViewController, UICollectionViewDelegat
 
 	// MARK: - Spin
 
-	@objc private func showSpinner() {
-		print("Tap....")
+	private func showErrorAlert() {
+		let alert = UIAlertController(title: "Opps...", message: "At least 2 options needed", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+		present(alert, animated: true)
 	}
 
-
+	@objc private func showSpinner() {
+		if options.count < 2 {
+			showErrorAlert()
+			return
+		}
+		navigationController?.pushViewController(SpinnerViewController(spinnerItems: options), animated: true)
+	}
 }
